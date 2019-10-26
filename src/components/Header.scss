@@ -5,7 +5,7 @@ header {
     background-color: $primaryLight;
     color: #FFF;
     padding-left: $sidenavWidth;
-    height: 65px;
+    height: $headerHeight;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,8 +27,8 @@ header {
           cursor: pointer;
         }
         img {
-          width: 25px;
-          height: 25px;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           padding: 10px;
         }

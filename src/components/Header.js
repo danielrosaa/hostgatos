@@ -3,7 +3,7 @@ import Avatar from './../assets/images/avatar.png'
 import './Header.scss'
 
 // FontAwesome
-import { faAngleDown, faAngleLeft, faPaw, faCommentAlt } from '@fortawesome/free-solid-svg-icons' 
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons' 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Header extends Component {

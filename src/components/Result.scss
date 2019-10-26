@@ -1,0 +1,34 @@
+@import './../styles/variables';
+@import './../styles/fonts';
+
+.result {
+    display: flex;
+    margin-top: 30px;
+    .cat-img {
+        margin-right: 20px;
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    .info {
+        font-size: 0.9rem;
+        .title{
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .about {
+            margin-top: 0;
+        }
+        .qualities {
+            ul {
+                padding-left: 0;
+                list-style: none;
+                li {
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}
