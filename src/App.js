@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Avatar from './assets/images/avatar.png'
+
+// FontAwesome
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons' 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <div className="sidenav">
+        Side Nav
+      </div>
+      <header>
+        <div className="header-content">
+          <div className="title">Breeds</div>
+          <div className="user">
+            <img src={Avatar} alt="Avatar Icon"/>
+            <FontAwesomeIcon icon={faAngleDown} />
+          </div>
+        </div>
       </header>
+      <div className="content">
+        Content
+      </div>
     </div>
   );
 }
