@@ -1,21 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import './Result.scss'
-import Avatar from './../assets/images/avatar.png'
+// import Avatar from './../assets/images/avatar.png'
 
 // FontAwesome
 // import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-class Result extends Component {
-    render() {
+const Result = props => {
         return (
             <div className="result">
                 <div className="cat-img">
-                    <img src={Avatar} alt="Cat"/>
+                    <img src={props.img} alt="Cat"/>
                 </div>
                 <div className="info">
-                    <p className="title">Bengal</p>
-                    <p className="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque itaque voluptatum quis deserunt atque officia dolore cum adipisci odio distinctio, eligendi quas animi voluptatem provident, minima ullam nam, exercitationem earum!</p>
+                    <p className="title">{props.breed}</p>
+                    <p className="about">{props.description}</p>
                     <div className="qualities">
                         <ul>
                             <li>Ability 1</li>
@@ -29,6 +28,5 @@ class Result extends Component {
             </div>
         )
     }
-}
 
 export default Result
