@@ -7,51 +7,51 @@ body {
   font-size: $fontSize;
 }
 
-header {
-  background-color: $primaryLight;
-  color: #FFF;
-  padding-left: $sidenavWidth;
-  height: 65px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .header-content {
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
-    width: 100%;
-    .title {
-      flex: 1;
-    }
-    .user {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      text-align: right;
-      img, svg {
-        cursor: pointer;
-      }
-      img {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        padding: 10px;
-      }
-    }
-  }
-}
+// header {
+//   background-color: $primaryLight;
+//   color: #FFF;
+//   padding-left: $sidenavWidth;
+//   height: 65px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   .header-content {
+//     display: flex;
+//     align-items: center;
+//     padding: 0 50px;
+//     width: 100%;
+//     .title {
+//       flex: 1;
+//     }
+//     .user {
+//       flex: 1;
+//       display: flex;
+//       justify-content: flex-end;
+//       align-items: center;
+//       text-align: right;
+//       img, svg {
+//         cursor: pointer;
+//       }
+//       img {
+//         width: 25px;
+//         height: 25px;
+//         border-radius: 50%;
+//         padding: 10px;
+//       }
+//     }
+//   }
+// }
 
-.sidenav {
-  background-color: $primary;
-  color: #FFF;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: $sidenavWidth;
-  height: 100vh;
-  z-index: 2;
-}
+// .sidenav {
+//   background-color: $primary;
+//   color: #FFF;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: $sidenavWidth;
+//   height: 100vh;
+//   z-index: 2;
+// }
 
 .content {
   background-color: $background;
