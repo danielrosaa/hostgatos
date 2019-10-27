@@ -6,39 +6,40 @@ import api from './../services/api'
 class Content extends Component {
     state = {
         show: false,
+        showMore: false,
+        search: '',
         breed: '',
         description: '',
-        search: '',
         resultNumber: -1,
-        img: ''
+        img: '',
+        cat: [{
+            name: '',
+            description: ''
+        }]
     }
-    getResult(query) {
-        api
-            .get('images/search')
-            .then(response => {
-                console.log(response.data)
-                this.setState({
-                    img: response.data[0].url
-                })
+
+    async handleGetResult(query, event) {
+        if (event.key === 'Enter') {
+            const response = await api.get('images/search')
+            this.setState({
+                img: response.data[0].url
             })
-        api
-            .get(`breeds/search?q=${query}`)
-            .then(response => {
-                this.setState({
-                    breed: response.data.length === 0 ? 'Not found' : response.data[0].name,
-                    description: response.data.length === 0 ? 'Not found' : response.data[0].description,
-                    resultNumber: response.data.length
-                })
+    
+            const { data } = await api.get(`breeds/search?q=${query}`)
+            this.setState({ cat: [...data], resultNumber: data.length })
+    
+            this.setState({
+                show: true,
+                showMore: false
             })
-        this.setState({
-            show: true
-        })
+        }
     }
-    showResult() {
-        const { show, resultNumber } = this.state
-        if (resultNumber === 0) return <h3>No data found</h3>
-        return show ? <Result breed={this.state.breed} description={this.state.description} img={this.state.img} /> : ''
+
+    handleLoadMore(e) {
+        e.preventDefault();
+        this.setState({ show: false, showMore: true })
     }
+    
     render() {
         return (
             <div className="content">
@@ -49,25 +50,39 @@ class Content extends Component {
                             type="text"
                             name="search"
                             id="search"
-                            placeholder="Enter the breed..."
-                            onBlur={() => this.getResult(this.state.search)}
+                            placeholder="Type the breed and press Enter..."
+                            onKeyUp={(e) => this.handleGetResult(this.state.search, e)}
                             value={this.state.search}
-                            onChange={e => this.setState({search: e.target.value})} />
+                            onChange={e => this.setState({ search: e.target.value })} />
                     </div>
                     <div className="results-found">
-                        {this.state.resultNumber !== -1 ? 
+                        {this.state.resultNumber !== -1 ?
                             <div className="found">
-                            <span>{this.state.show ? this.state.resultNumber : 0} result(s) found</span>
+                                <span>{this.state.show ? this.state.resultNumber : 0} result(s) found</span>
                             </div>
                             : ''
                         }
-                        {this.showResult()}
-                        
-                        {/* {this.state.show ? <Result breed={this.state.breed} description={this.state.description} /> : ''} */}
-                        
+                        {/* {this.showResult()} */}
+                        {this.state.resultNumber === 0
+                            ? <h3>No data found</h3>
+                            : this.state.show ?
+                                <Result breed={this.state.cat[0].name} description={this.state.cat[0].description} img={this.state.img} />
+                            : '' }
+                        {/* {this.state.show && <Result breed={this.state.cat[0].name} description={this.state.cat[0].description} img={this.state.img} /> } */}
+                        {this.state.showMore && 
+                            this.state.cat.map(value => {
+                                return <Result key={value.id} breed={value.name} description={value.description} img={this.state.img} />
+                            })
+                        }
+
+                        <div className='load-more'>
+                            {this.state.resultNumber > 1 ?
+                                <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
+                                : ''}
+                        </div>
                     </div>
+
                 </div>
-                <button type="button" onClick={() => this.getResult()}>Load more</button>
             </div>
         )
     }
