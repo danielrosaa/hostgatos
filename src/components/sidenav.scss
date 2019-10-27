@@ -1,0 +1,47 @@
+@import './../styles/variables';
+@import './../styles/fonts';
+
+.sidenav {
+    background-color: $primary;
+    color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $sidenavWidth;
+    height: 100vh;
+    z-index: 2;
+    .logo {
+        height: calc(#{$headerHeight} * 1.4);
+        border-bottom: 2px dotted $primaryLight;
+        margin: 0 20px;
+        display: flex;
+        img {
+            margin-left: -15px;
+            width: 200px;
+            height: auto;
+        }
+        svg {
+            color: rgba($color: #FFF, $alpha: 0.5);
+            position: relative;
+            top: 20px;
+            right: -20px;
+        }
+    }
+    .menu-list {
+        padding: 0 20px;
+        ul {
+            padding-left: 0;
+            list-style: none;
+                li {
+                    cursor: pointer;
+                    svg {
+                        margin-right: 5px;
+                    }
+                    margin: 10px 0;
+                }
+                li:not(.active) {
+                    color: rgba($color: #FFF, $alpha: 0.5);
+                }
+        }
+    }
+  }

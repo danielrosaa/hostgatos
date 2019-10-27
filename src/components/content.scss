@@ -1,0 +1,70 @@
+@import './../styles/variables';
+@import './../styles/fonts';
+
+.content {
+    // background-color: $background;
+    // height: calc(100vh - #{$headerHeight} - 100px); // -100px equivalentes aos 50px de padding-top e padding-bottom
+    // max-height: 100%;
+    padding: 50px;
+    margin-left: $sidenavWidth;
+
+    .inner-content {
+        box-shadow: 0px 0px 15px -3px rgba($color: #000000, $alpha: 0.2);
+        background-color: #FFF;
+        border-left: 5px solid $primaryLight;
+        padding: 30px;
+        color: $textColor;
+        margin-bottom: 50px;
+
+        .load-more {
+            text-align: center;
+
+            button {
+                padding: 10px 15px;
+                font-size: 1rem;
+                color: #CCC;
+                background-color: #FFF;
+                border: 1px solid #CCC;
+
+                &:hover {
+                    background-color: #EEE;
+                }
+            }
+        }
+
+        .search {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            border-bottom: 2px dotted rgba($color: #000000, $alpha: 0.2);
+            padding-bottom: 50px;
+            margin-bottom: 20px;
+
+            label {
+                font-size: 2rem;
+                margin-right: 20px;
+            }
+
+            input {
+                width: 50%;
+                height: 40px;
+                border-radius: 3px;
+                border: 1px solid rgba($color: #000000, $alpha: 0.2);
+                padding: 0 10px;
+
+                &::placeholder {
+                    font-size: 0.9rem;
+                    color: rgba($color: #000000, $alpha: 0.4);
+                }
+            }
+        }
+
+        .results-found {
+            .found {
+                color: rgba($color: #000000, $alpha: 0.4);
+                text-align: center;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
