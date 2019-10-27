@@ -1,0 +1,37 @@
+@import './../styles/variables';
+@import './../styles/fonts';
+
+header {
+    background-color: $primaryLight;
+    color: #FFF;
+    padding-left: $sidenavWidth;
+    height: $headerHeight;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .header-content {
+      display: flex;
+      align-items: center;
+      padding: 0 50px;
+      width: 100%;
+      .title {
+        flex: 1;
+      }
+      .user {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: right;
+        img, svg {
+          cursor: pointer;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          padding: 10px;
+        }
+      }
+    }
+  }
