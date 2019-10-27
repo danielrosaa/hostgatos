@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Avatar from './../assets/images/avatar.png'
-import './Header.scss'
+import './header.scss'
 
 // FontAwesome
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons' 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import './Result.scss'
+import './result.scss'
+import Ratings from './ratings'
 // import Avatar from './../assets/images/avatar.png'
 
 // FontAwesome
@@ -8,11 +9,10 @@ import './Result.scss'
 class Header extends Component {
     state = {
         abilities: [
-            { id: 1, value: 'test' },
-            { id: 2, value: 'test' },
-            { id: 3, value: 'test' },
-            { id: 4, value: 'test' },
-            { id: 5, value: 'test' },
+            { id: 1, name: 'Affection Level', value: 5 },
+            { id: 2, name: 'Adaptability', value: 0 },
+            { id: 3, name: 'Child Friendly', value: 2 },
+            { id: 4, name: 'Dog Friendly', value: 4 }
         ]
     }
     render() {
@@ -23,11 +23,11 @@ class Header extends Component {
                 </div>
                 <div className="info">
                     <p className="title">{this.props.breed}</p>
-                    <p className="about">{this.props.description}</p>
+                    <p className="about">{this.props.description === undefined ? 'No description available' : this.props.description}</p>
                     <div className="qualities">
                         <ul>
-                            {this.state.abilities.map((ability) => {
-                                return <li key={ability.id}>{ability.value} #{ability.id}</li>
+                            {this.state.abilities.map((ability, index) => {
+                                return <Ratings key={ability.id} abilities={this.state.abilities} index={index} />
                             })}
                         </ul>
                     </div>

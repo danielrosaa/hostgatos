@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Sidenav from './components/Sidenav'
-import Header from './components/Header'
-import Content from './components/Content'
+import Sidenav from './components/sidenav'
+import Header from './components/header'
+import Content from './components/content'
 
 function App() {
   return (

@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import './Content.scss'
-import Result from './Result'
-import api from './../services/api'
+import './content.scss'
+import Result from './result'
+import api from '../services/api'
 
 class Content extends Component {
     state = {
         show: false,
         showMore: false,
         search: '',
-        breed: '',
-        description: '',
         resultNumber: -1,
         img: '',
         cat: [{
@@ -20,10 +18,12 @@ class Content extends Component {
 
     async handleGetResult(query, event) {
         if (event.key === 'Enter') {
-            const response = await api.get('images/search')
+            const response = await api.get('images/search?limit=100')
             this.setState({
                 img: response.data[0].url
             })
+            // let imgs = [...response.data.filter(img => img.breeds.length > 0)]
+            // console.log('images', imgs)
     
             const { data } = await api.get(`breeds/search?q=${query}`)
             this.setState({ cat: [...data], resultNumber: data.length })

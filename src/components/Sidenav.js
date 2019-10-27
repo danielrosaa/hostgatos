@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './Sidenav.scss'
+import './sidenav.scss'
 import Logo from './../assets/images/marca-hostgatos.svg'
 
 // FontAwesome
