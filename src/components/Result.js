@@ -6,7 +6,7 @@ import Ratings from './ratings'
 // FontAwesome
 // import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-class Result extends Component {
+class Header extends Component {
     state = {
         abilities: [
             { id: 1, name: 'Affection Level', value: 5 },
@@ -37,4 +37,4 @@ class Result extends Component {
     }
 }
 
-export default Result
+export default Header
