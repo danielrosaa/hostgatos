@@ -7,7 +7,7 @@ import api from '../services/api'
 
 class Content extends Component {
     componentDidMount() {
-        console.log('resultNumber', this.props.resultNumber)
+        console.log(this.props)
         this.props.fetchData()
         this.props.fetchImage()
     }
@@ -59,11 +59,24 @@ class Content extends Component {
                         {this.props.resultNumber === 0
                             ? <h3>No data found</h3>
                             : this.state.show ?
-                                <Result breed={this.props.breed[0].name} description={this.props.breed[0].description} img={this.props.image} />
+                                <Result
+                                    breed={this.props.breed[0].name}
+                                    description={this.props.breed[0].description}
+                                    affection_level={this.props.breed[0].affection_level}
+                                    adaptability={this.props.breed[0].adaptability}
+                                    dog_friendly={this.props.breed[0].dog_friendly}
+                                    child_friendly={this.props.breed[0].child_friendly}
+                                    search={this.state.search}
+                                    img={this.props.image}
+                                     />
                                 : ''}
                         {this.state.showMore &&
                             this.props.breed.map(value => {
-                                return <Result key={value.id} breed={value.name} description={value.description} img={this.props.image} />
+                                return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={this.props.image}
+                                            affection_level={this.props.breed.affection_level}
+                                            adaptability={this.props.breed.adaptability}
+                                            dog_friendly={this.props.breed.dog_friendly}
+                                            child_friendly={this.props.breed.child_friendly}/>
                             })
                         }
 
