@@ -9,6 +9,7 @@ class Content extends Component {
         this.props.fetchData()
         this.props.fetchImage()
     }
+
     state = {
         show: false,
         showMore: false,
@@ -73,12 +74,12 @@ class Content extends Component {
                                     dog_friendly={this.props.breed[0].dog_friendly}
                                     child_friendly={this.props.breed[0].child_friendly}
                                     search={this.state.search}
-                                    img={this.props.image}
+                                    img={this.props.breed[0].id}
                                      />
                                 : ''}
                         {this.state.showMore &&
                             this.props.breed.map((value, i) => {
-                                    return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={this.props.image}
+                                    return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={value.id}
                                                 affection_level={this.props.breed[i].affection_level}
                                                 adaptability={this.props.breed[i].adaptability}
                                                 dog_friendly={this.props.breed[i].dog_friendly}
@@ -108,10 +109,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         async fetchImage() {
-            const { data } = await api.get(`images/search?limit=100`)
+            const response = await api.get(`images/search?limit=100`)
             dispatch({
                 type: 'FETCH_IMAGE',
-                payload: data[0].url
+                payload: response.data[0].url
             })
         },
         async fetchData(query) {

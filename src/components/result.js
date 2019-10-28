@@ -1,18 +1,36 @@
 import React, { Component } from "react";
 import './result.scss'
 import Ratings from './ratings'
-import { connect } from 'react-redux'
+import api from './../services/api'
+import sadCat from './../assets/images/sadcat.jpg'
 
 class Result extends Component {
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.search !== this.props.search) {
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.description != prevProps.description) {
+            this.getImage()
+        }
+    }
+
+    componentDidMount() {
+        this.getImage()
+    }
+    
+    async getImage() {
+        const { data } = await api.get(`images/search?breed_id=${this.props.img}`)
+        if (data.length !== 0) {
             this.setState({
-                search: this.props.search,
-            });
+                catImage: data[0].url
+            })
+        } else {
+            this.setState({
+                catImage: sadCat
+            })
         }
     }
     state = {
         search: this.props.search,
+        catImage: '',
         abilities: [
             { id: 1, name: 'Affection Level', value: this.props.affection_level },
             { id: 2, name: 'Adaptability', value: this.props.adaptability },
@@ -20,11 +38,12 @@ class Result extends Component {
             { id: 4, name: 'Dog Friendly', value: this.props.dog_friendly }
         ]
     }
+
     render() {
         return (
             <div className="result">
                 <div className="cat-img">
-                    <img src={this.props.img} alt="Cat" />
+                    <img src={this.state.catImage} alt="Cat" />
                 </div>
                 <div className="info">
                     <p className="title">{this.props.breed}</p>
@@ -49,10 +68,4 @@ class Result extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        breed_redux: state.breed
-    }
-}
-
-export default connect(mapStateToProps)(Result)
+export default Result
