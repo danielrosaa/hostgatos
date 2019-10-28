@@ -10,21 +10,32 @@ import { connect } from 'react-redux'
 class Result extends Component {
     componentDidMount() {
         console.log('props', this.props)
-        this.setState({
-            search: this.props.search
-        })
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.search !== this.props.search) {
             this.setState({
-                search: this.props.search
+                search: this.props.search,
             });
         }
+        // this.setState({
+        //     abilities: abilities.map( (item, index) => {
+        //         switch(index) {
+        //             case 0:
+        //                 return item.value = this.props.affection_level
+        //             case 1:
+        //                 return item.value = this.props.adaptability 
+        //             case 2:
+        //                 return item.value = this.props.child_friendly
+        //             case 3:
+        //                 return item.value = this.props.dog_friendly
+        //         }
+        //     })
+        // })
     }
     // shouldComponentUpdate() {
-    //     return this.props.search !== this.state.search
-    // }
-
+        //     return this.props.search !== this.state.search
+        // }
+        
     state = {
         search: this.props.search,
         abilities: [

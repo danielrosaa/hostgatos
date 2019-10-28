@@ -2,7 +2,7 @@ import { FETCH_DATA, FETCH_IMAGE } from '../actions/types'
 // import api from './../services/api'
 
 const initialState = {
-    image: '',
+    image: 'https://cdn2.thecatapi.com/images/1i.gif',
     resultNumber: -1,
     breed: []
 }

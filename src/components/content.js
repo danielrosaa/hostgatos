@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-// import { fetchImage, fetchData } from './../actions/postActions'
 import './content.scss'
 import Result from './result'
 import api from '../services/api'
@@ -71,17 +70,17 @@ class Content extends Component {
                                      />
                                 : ''}
                         {this.state.showMore &&
-                            this.props.breed.map(value => {
-                                return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={this.props.image}
-                                            affection_level={this.props.breed.affection_level}
-                                            adaptability={this.props.breed.adaptability}
-                                            dog_friendly={this.props.breed.dog_friendly}
-                                            child_friendly={this.props.breed.child_friendly}/>
+                            this.props.breed.map((value, i) => {
+                                    return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={this.props.image}
+                                                affection_level={this.props.breed[i].affection_level}
+                                                adaptability={this.props.breed[i].adaptability}
+                                                dog_friendly={this.props.breed[i].dog_friendly}
+                                                child_friendly={this.props.breed[i].child_friendly}/>
                             })
                         }
 
                         <div className='load-more'>
-                            {this.props.resultNumber > 1 ?
+                            {this.state.show ?
                                 <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
                                 : ''}
                         </div>
