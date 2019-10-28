@@ -111,6 +111,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         async fetchData(query) {
             const { data } = await api.get(`breeds/search?q=${query}`)
+            const response = await api.get(`breeds/search?q=${query}`)
+            console.log(response)
             dispatch({
                 type: 'FETCH_DATA',
                 payload: [...data]
