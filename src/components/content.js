@@ -30,12 +30,12 @@ class Content extends Component {
 
     handleLoadMore(e) {
         e.preventDefault();
-        this.setState({ show: false, showMore: true })
+        this.setState({ show: true, showMore: true })
     }
 
     getMoreValues() {
         if (this.props.breed.length > 1) {
-            if (this.state.show) {
+            if (this.state.show && !this.state.showMore) {
                 return <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
             }
         }
@@ -78,7 +78,7 @@ class Content extends Component {
                                      />
                                 : ''}
                         {this.state.showMore &&
-                            this.props.breed.map((value, i) => {
+                            this.props.breed.slice(1).map((value, i) => {
                                     return <Result key={value.id} breed={value.name} search={this.state.search} description={value.description} img={value.id}
                                                 affection_level={this.props.breed[i].affection_level}
                                                 adaptability={this.props.breed[i].adaptability}

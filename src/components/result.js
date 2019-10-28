@@ -7,7 +7,7 @@ import sadCat from './../assets/images/sadcat.jpg'
 class Result extends Component {
     
     componentDidUpdate(prevProps) {
-        if (this.props.description != prevProps.description) {
+        if (this.props.description !== prevProps.description) {
             this.getImage()
         }
     }
