@@ -1,15 +1,22 @@
+# HOSTGATOS
+
 Esse projeto foi criado usando [Create React App](https://github.com/facebook/create-react-app).
+App desenvolvido como processo seletivo de determinada empresa.
 
 ## Scripts
 
-Na raiz do projeto, você pode executar:
+Na raiz do projeto, execute:
+
+### `yarn install / npm install`
+
+Instala as dependências do projeto.
 
 ### `yarn start / npm start`
 
 Executa o app em modo de desenvolvedor.
 Abra [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn test or npm test`
+### `yarn test / npm test`
 
 Executa quatro testes:
 1. Renderiza a aplicação sem quebrar;
