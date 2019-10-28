@@ -1,33 +1,27 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+// import { fetchImage, fetchData } from './../actions/postActions'
 import './content.scss'
 import Result from './result'
 import api from '../services/api'
 
 class Content extends Component {
+    componentDidMount() {
+        console.log('resultNumber', this.props.resultNumber)
+        this.props.fetchData()
+        this.props.fetchImage()
+    }
     state = {
         show: false,
         showMore: false,
-        search: '',
-        resultNumber: -1,
-        img: '',
-        cat: [{
-            name: '',
-            description: ''
-        }]
+        search: ''
     }
 
-    async handleGetResult(query, event) {
+    handleGetResult(query, event) {
         if (event.key === 'Enter') {
-            const response = await api.get('images/search?limit=100')
-            this.setState({
-                img: response.data[0].url
-            })
-            // let imgs = [...response.data.filter(img => img.breeds.length > 0)]
-            // console.log('images', imgs)
-    
-            const { data } = await api.get(`breeds/search?q=${query}`)
-            this.setState({ cat: [...data], resultNumber: data.length })
-    
+
+            this.props.fetchImage()
+            this.props.fetchData(query)
             this.setState({
                 show: true,
                 showMore: false
@@ -39,7 +33,7 @@ class Content extends Component {
         e.preventDefault();
         this.setState({ show: false, showMore: true })
     }
-    
+
     render() {
         return (
             <div className="content">
@@ -56,27 +50,25 @@ class Content extends Component {
                             onChange={e => this.setState({ search: e.target.value })} />
                     </div>
                     <div className="results-found">
-                        {this.state.resultNumber !== -1 ?
+                        {this.props.resultNumber !== -1 ?
                             <div className="found">
-                                <span>{this.state.show ? this.state.resultNumber : 0} result(s) found</span>
+                                <span>{this.state.show ? this.props.resultNumber : 0} result(s) found</span>
                             </div>
                             : ''
                         }
-                        {/* {this.showResult()} */}
-                        {this.state.resultNumber === 0
+                        {this.props.resultNumber === 0
                             ? <h3>No data found</h3>
                             : this.state.show ?
-                                <Result breed={this.state.cat[0].name} description={this.state.cat[0].description} img={this.state.img} />
-                            : '' }
-                        {/* {this.state.show && <Result breed={this.state.cat[0].name} description={this.state.cat[0].description} img={this.state.img} /> } */}
-                        {this.state.showMore && 
-                            this.state.cat.map(value => {
-                                return <Result key={value.id} breed={value.name} description={value.description} img={this.state.img} />
+                                <Result breed={this.props.breed[0].name} description={this.props.breed[0].description} img={this.props.image} />
+                                : ''}
+                        {this.state.showMore &&
+                            this.props.breed.map(value => {
+                                return <Result key={value.id} breed={value.name} description={value.description} img={this.props.image} />
                             })
                         }
 
                         <div className='load-more'>
-                            {this.state.resultNumber > 1 ?
+                            {this.props.resultNumber > 1 ?
                                 <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
                                 : ''}
                         </div>
@@ -88,4 +80,31 @@ class Content extends Component {
     }
 }
 
-export default Content
+const mapStateToProps = state => {
+    return {
+        image: state.image,
+        breed: state.breed,
+        resultNumber: state.resultNumber
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        async fetchImage() {
+            const { data } = await api.get(`images/search?limit=100`)
+            dispatch({
+                type: 'FETCH_IMAGE',
+                payload: data[0].url
+            })
+        },
+        async fetchData(query) {
+            const { data } = await api.get(`breeds/search?q=${query}`)
+            dispatch({
+                type: 'FETCH_DATA',
+                payload: [...data]
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content)
