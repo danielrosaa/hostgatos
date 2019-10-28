@@ -2,40 +2,15 @@ import React, { Component } from "react";
 import './result.scss'
 import Ratings from './ratings'
 import { connect } from 'react-redux'
-// import Avatar from './../assets/images/avatar.png'
 
-// FontAwesome
-// import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Result extends Component {
-    componentDidMount() {
-        console.log('props', this.props)
-    }
     componentDidUpdate(prevProps, prevState) {
         if (this.state.search !== this.props.search) {
             this.setState({
                 search: this.props.search,
             });
         }
-        // this.setState({
-        //     abilities: abilities.map( (item, index) => {
-        //         switch(index) {
-        //             case 0:
-        //                 return item.value = this.props.affection_level
-        //             case 1:
-        //                 return item.value = this.props.adaptability 
-        //             case 2:
-        //                 return item.value = this.props.child_friendly
-        //             case 3:
-        //                 return item.value = this.props.dog_friendly
-        //         }
-        //     })
-        // })
     }
-    // shouldComponentUpdate() {
-        //     return this.props.search !== this.state.search
-        // }
-        
     state = {
         search: this.props.search,
         abilities: [

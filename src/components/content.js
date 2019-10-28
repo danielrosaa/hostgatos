@@ -6,7 +6,6 @@ import api from '../services/api'
 
 class Content extends Component {
     componentDidMount() {
-        console.log(this.props)
         this.props.fetchData()
         this.props.fetchImage()
     }
@@ -33,6 +32,14 @@ class Content extends Component {
         this.setState({ show: false, showMore: true })
     }
 
+    getMoreValues() {
+        if (this.props.breed.length > 1) {
+            if (this.state.show) {
+                return <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
+            }
+        }
+    }
+
     render() {
         return (
             <div className="content">
@@ -51,7 +58,7 @@ class Content extends Component {
                     <div className="results-found">
                         {this.props.resultNumber !== -1 ?
                             <div className="found">
-                                <span>{this.state.show ? this.props.resultNumber : 0} result(s) found</span>
+                                <span>{this.props.resultNumber > 0 ? this.props.resultNumber : 0} result(s) found</span>
                             </div>
                             : ''
                         }
@@ -80,9 +87,7 @@ class Content extends Component {
                         }
 
                         <div className='load-more'>
-                            {this.state.show ?
-                                <button type="button" onClick={(e) => this.handleLoadMore(e)}>Load more</button>
-                                : ''}
+                            {this.getMoreValues()}
                         </div>
                     </div>
 
@@ -111,8 +116,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         async fetchData(query) {
             const { data } = await api.get(`breeds/search?q=${query}`)
-            const response = await api.get(`breeds/search?q=${query}`)
-            console.log(response)
             dispatch({
                 type: 'FETCH_DATA',
                 payload: [...data]
