@@ -1,6 +1,21 @@
 @import './../styles/variables';
 @import './../styles/fonts';
 
+@media only screen and (max-width: 650px) {
+  header {
+    width: 100%;
+    height: calc(#{$headerHeight} - 20px);
+    padding-left: 10px !important;
+    &::before {
+      content: "|||";
+      position: absolute;
+      left: 30px;
+      transform: rotate(90deg);
+      cursor: pointer;
+    }
+  }
+}
+
 header {
     background-color: $primaryLight;
     color: #FFF;

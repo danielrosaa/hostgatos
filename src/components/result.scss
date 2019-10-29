@@ -1,6 +1,45 @@
 @import './../styles/variables';
 @import './../styles/fonts';
 
+@media only screen and (max-width: 650px) {
+    .result {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        border-bottom: 2px dotted $primaryLight;
+        .cat-img {
+            margin: 0 auto !important;
+            margin-bottom: 10px !important;
+            img {
+                width: auto !important;
+                height: 200px !important;
+            }
+        }
+        .info {
+            font-size: 0.9rem;
+            width: 100%;
+            .title{
+                margin: 0;
+                margin-bottom: 10px !important;
+                font-size: 1rem;
+                font-weight: bold;
+                text-align: center;
+            }
+            .about {
+                margin-top: 0;
+            }
+            .qualities {
+                ul {
+                    padding-left: 0;
+                    list-style: none;
+                    li {
+                        margin: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+}
 .result {
     display: flex;
     margin-top: 30px;

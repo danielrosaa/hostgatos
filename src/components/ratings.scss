@@ -1,3 +1,25 @@
+@import './../styles/variables';
+@import './../styles/fonts';
+
+@media only screen and (max-width: 650px) {
+    .ratings {
+        margin: 10px 0;
+        font-size: 1rem;
+        width: 100%;
+        display: flex;
+        div:first-child {
+            flex: 1 !important;
+            text-align: right;
+            margin-right: 10px;
+        }
+        div:last-child {
+            margin-left: 10px;
+            flex: 1 !important;
+        }
+    }
+}
+
+
 .ratings {
     margin: 10px 0;
     font-size: 1rem;
