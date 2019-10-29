@@ -2,6 +2,7 @@
 
 Esse projeto foi criado usando [Create React App](https://github.com/facebook/create-react-app).
 App desenvolvido como processo seletivo de determinada empresa.
+Aplicativo responsivo. Acesso pelo celular em [Hostgatos](https://hostgatos-danielrosa.herokuapp.com).
 
 ## Scripts
 
