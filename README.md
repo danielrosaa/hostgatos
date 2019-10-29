@@ -4,7 +4,7 @@ Esse projeto foi criado usando [Create React App](https://github.com/facebook/cr
 
 App desenvolvido como processo seletivo de determinada empresa.
 
-Aplicativo responsivo. Acesso pelo celular em [Hostgatos](https://hostgatos-danielrosa.herokuapp.com).
+Aplicativo responsivo; acesse pelo celular em [Hostgatos](https://hostgatos-danielrosa.herokuapp.com).
 
 ## Scripts
 
