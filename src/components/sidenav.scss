@@ -1,6 +1,11 @@
 @import './../styles/variables';
 @import './../styles/fonts';
 
+@media only screen and (max-width: 650px) {
+    .sidenav {
+      display: none;
+    }
+  }
 .sidenav {
     background-color: $primary;
     color: #FFF;
