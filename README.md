@@ -1,7 +1,9 @@
 # HOSTGATOS
 
 Esse projeto foi criado usando [Create React App](https://github.com/facebook/create-react-app).
+
 App desenvolvido como processo seletivo de determinada empresa.
+
 Aplicativo responsivo. Acesso pelo celular em [Hostgatos](https://hostgatos-danielrosa.herokuapp.com).
 
 ## Scripts
@@ -15,7 +17,7 @@ Instala as dependências do projeto.
 ### `yarn start / npm start`
 
 Executa o app em modo de desenvolvedor.
-Abra [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Abra [http://localhost:3000](http://localhost:3000) para visualizar em seu navegador.
 
 ### `yarn test / npm test`
 
