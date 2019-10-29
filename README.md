@@ -23,3 +23,6 @@ Executa quatro testes:
 2. Verifica se a API responde;
 3. Verifica se o resultado da pesquisa "sia" retorna 4 itens;
 4. Verifica se o resultado da pesquisa "poodle" retorna vazio.
+
+
+###### Você pode acessar o projeto por tempo indeterminado [clicando aqui](https://hostgatos-danielrosa.herokuapp.com).
